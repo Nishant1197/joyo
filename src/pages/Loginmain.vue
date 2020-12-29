@@ -5,17 +5,16 @@
           v-if="tab=='register'"
            class="q-mb-md" outlined v-model="form.name" 
           label="Name" />
-          <q-inpu
+          
         
-           <q-input class="q-mb-md" outlined v-model="form.email" 
-          label="Email" />
+           <q-input class="q-mb-md" outlined v-model="form.email" label="Email" />
            <q-input outlined v-model="form.password" 
           label="Password" />
-          <div >
+          <div class="row justify-center">
               <!-- q-space gives space horizontally -->
               
             <q-btn 
-        
+           
             color="primary"
             class="q-mt-sm "
             type="submit"
