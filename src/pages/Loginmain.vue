@@ -1,14 +1,21 @@
 <template>
 <q-form >
           <q-input
-          @keyup.enter="checkmail()"
+         
           v-if="tab=='register'"
            class="q-mb-md" outlined v-model="form.name" 
           label="Name" />
           
         
-           <q-input class="q-mb-md" outlined v-model="form.email" label="Email" />
-           <q-input outlined v-model="form.password" 
+           <q-input class="q-mb-md" type="email" 
+           :rules="[val => !!val ||'Email is missing',isValidEmail] "
+           
+           outlined v-model="form.email" label="Email" />
+           <q-input 
+          :rules="[val => !!val ||'Password is missing',isValidPassword] "
+
+
+           outlined type="password" v-model="form.password" 
           label="Password" />
           <div class="row justify-center">
               <!-- q-space gives space horizontally -->
@@ -41,14 +48,18 @@ export default {
     }},
     methods:
     {
-        checkmail(){
-             if(this.form.name.length<5)
-        {
-            return "Invalid"
-        }
-        
-    }
+isValidEmail (val) {
+    const emailPattern = /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
+    return emailPattern.test(val) || 'Invalid email';
     
-    
-}}
+  
+
+},isValidPassword(val)
+{   console.log("hello")
+    const passwordPattern=/(?=.*[a-z])(?=.*[A-z])(?=.*[0-9])(?=.*[!?@])[a-zA-Z0-9!?@]{8,}/
+    return passwordPattern.test(val) || 'Password Should contain atleast 8 characters,1 small letter,1 capital letter,1 numeric letter and 1 special character'
+}
+}
+}
+
 </script>
