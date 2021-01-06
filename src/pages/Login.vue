@@ -21,11 +21,11 @@
 
         <q-tab-panels v-model="tab" animated>
           <q-tab-panel name="login">
-           <Loginmain :tab="tab"/>
+           <Loginmain />
           </q-tab-panel>
 
           <q-tab-panel name="register">
-                     <Loginmain :tab="tab"/>
+                     <Register />
 
         </q-tab-panel>
 
@@ -36,15 +36,17 @@
 </template>
 
 <script>
-import Loginmain from "/home/lenovo/joyo/src/pages/Loginmain.vue"
+import Loginmain from "pages/Loginmain.vue"
+import Register from "pages/Register.vue"
 export default {
   data () {
     return {
-      tab: 'login'
+      tab: ''
     }
   },
   components:{
-    Loginmain
+    Loginmain,
+    Register
   }
 }
 

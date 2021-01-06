@@ -1,6 +1,13 @@
 <template>
-  <q-form @submit="submitForm">
     
+ <q-form @submit="submitForm">
+    <q-input
+     
+      class="q-mb-md"
+      outlined
+      v-model="details.name"
+      label="Name"
+    />
 
     <q-input
       class="q-mb-md"
@@ -17,28 +24,57 @@
       v-model="details.password"
       label="Password"
     />
-  
+    <q-option-group
+    
+      v-model="details.type"
+      :options="options"
+      color="primary"
+      inline
+    />
+    
     <div class="row justify-center">
       <!-- q-space gives space horizontally -->
 
-      <q-btn color="primary" class="q-mt-sm " type="submit" label="Login" />
+      <q-btn color="primary" class="q-mt-sm " type="submit" label="Register" />
     </div>
   </q-form>
 </template>
 <script>
 export default {
-  name: "Loginmain",
-  props: ["tab"],
+  name: "Register",
+ 
   data() {
     return {
       details:{
-    
+      name: "",
       email: "",
       password: "",
-     
+      type: "",
       },
       formData:[],
-     
+      options: [
+        {
+          label: "Admin",
+          value: "admin"
+        },
+        {
+          label: "Project Manager",
+          value: "projectManager"
+        },
+        {
+          label: "Project Lead",
+          value: "projectLead"
+        },
+
+        {
+          label: "Tech team",
+          value: "techTeam"
+        },
+        {
+          label: "Intern",
+          value: "intern"
+        }
+      ]
     }
   },
 
