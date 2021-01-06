@@ -41,7 +41,7 @@ import Register from "pages/Register.vue"
 export default {
   data () {
     return {
-      tab: ''
+      tab: 'login'
     }
   },
   components:{

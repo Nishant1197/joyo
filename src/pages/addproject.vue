@@ -18,10 +18,10 @@
       type="textarea"
     />
   </div>
-
+       
        <q-input class="q-pl-md" bottom-slots v-model="membername" placeholder="Member Name">
         <template v-slot:before>
-          <q-icon name="event" />
+          <q-icon name="person" />
         </template>
 
       

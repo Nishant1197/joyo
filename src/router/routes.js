@@ -6,7 +6,14 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Login.vue') },
       { path: '/addproject', component: () => import('pages/addproject.vue') },
-      { path: '/dashboard', component: () => import('pages/Dashboard.vue') }
+      { path: '/admin', component: () => import('pages/Admin.vue') },
+      { path: '/projectmanager', component: () => import('pages/Projectmanager.vue') },
+      { path: '/projectlead', component: () => import('pages/Projectlead.vue') },
+      { path: '/techteam', component: () => import('pages/Techteam.vue') },
+      { path: '/intern', component: () => import('pages/Intern.vue') }
+
+
+
 
     ]
   },

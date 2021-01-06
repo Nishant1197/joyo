@@ -1,6 +1,6 @@
 <template>
     
- <q-form @submit="submitForm">
+ <q-form   @submit="submitForm">
     <q-input
      
       class="q-mb-md"
@@ -35,21 +35,25 @@
     <div class="row justify-center">
       <!-- q-space gives space horizontally -->
 
-      <q-btn color="primary" class="q-mt-sm " type="submit" label="Register" />
+      <q-btn 
+      color="primary" class="q-mt-sm " type="submit" label="Register" />
     </div>
   </q-form>
 </template>
 <script>
 export default {
   name: "Register",
- 
+ components:
+ {
+  //  "admin":require("pages/Dashboard")
+ },
   data() {
     return {
       details:{
       name: "",
       email: "",
       password: "",
-      type: "",
+      type: "admin",
       },
       formData:[],
       options: [
@@ -59,16 +63,16 @@ export default {
         },
         {
           label: "Project Manager",
-          value: "projectManager"
+          value: "projectmanager"
         },
         {
           label: "Project Lead",
-          value: "projectLead"
+          value: "projectlead"
         },
 
         {
           label: "Tech team",
-          value: "techTeam"
+          value: "techteam"
         },
         {
           label: "Intern",
@@ -80,9 +84,17 @@ export default {
 
   methods: {
     submitForm(){
-     this.formData.push(this.details);
-     this.details={}
-
+      if(this.details.type=="admin")
+     window.location.href="#/admin"
+     else if(this.details.type=="projectmanager")
+     window.location.href="#/projectmanager"
+      else if(this.details.type=="projectlead")
+      window.location.href="#/projectlead"
+      else if(this.details.type=="techteam")
+      window.location.href=("#/techteam")
+      else
+      window.location.href=("#/intern")
+     
     }
     ,
     isValidEmail(val) {

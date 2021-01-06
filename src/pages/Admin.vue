@@ -42,10 +42,10 @@
 
             </q-tab-panel>
             <q-tab-panel name="issues">
-              
+         <issue-list/>
             </q-tab-panel>
             <q-tab-panel name="addcomment">
-            
+            <add-comment/>
            
           </q-tab-panel>
         </q-tab-panels>
@@ -65,12 +65,14 @@ export default {
   components: {
    "project-list":require("pages/Projectslist.vue").default,
    "create-issue":require("pages/Createissue.vue").default,
-   "add-project":require("pages/addproject.vue").default
+   "add-project":require("pages/addproject.vue").default,
+   "issue-list":require("pages/Issues.vue").default,
+   "add-comment":require("pages/Addcomment.vue").default
   },
  data()
  {
     return{
-         tab:"projectlist"
+         tab:"addproject"
      }
  }}
 </script>
