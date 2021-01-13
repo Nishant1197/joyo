@@ -1,6 +1,6 @@
 <template>
     
- <q-form   @submit="submitForm">
+ <q-form   @submit.prevent="submitForm">
     <q-input
      
       class="q-mb-md"
@@ -53,9 +53,9 @@ export default {
       name: "",
       email: "",
       password: "",
-      type: "admin",
+      type: "",
       },
-      formData:[],
+    
       options: [
         {
           label: "Admin",
@@ -78,25 +78,41 @@ export default {
           label: "Intern",
           value: "intern"
         }
-      ]
+      ],
+      
+
     }
   },
+  
 
   methods: {
     submitForm(){
-      if(this.details.type=="admin")
-     window.location.href="#/admin"
-     else if(this.details.type=="projectmanager")
-     window.location.href="#/projectmanager"
-      else if(this.details.type=="projectlead")
-      window.location.href="#/projectlead"
-      else if(this.details.type=="techteam")
-      window.location.href=("#/techteam")
-      else
-      window.location.href=("#/intern")
+      
+      this.$store.commit('emp/addemp',this.details);
+        console.log("Detail submitted")
+        alert("You are resgistered")
+       
+    //   if(this.details.type=="admin")
+    //  window.location.href="#/admin"
+    //  else if(this.details.type=="projectmanager")
+    //  window.location.href="#/projectmanager"
+    //   else if(this.details.type=="projectlead")
+    //   window.location.href="#/projectlead"
+    //   else if(this.details.type=="techteam")
+    //   window.location.href=("#/techteam")
+    //   else
+    //   window.location.href=("#/intern")
+      // this.details.email=""
+      //   this.details.name=""
+      //   this.details.password=""
+      //   this.details.type=""
      
-    }
-    ,
+    
+   
+      
+         this.details={}
+    },
+    
     isValidEmail(val) {
       const emailPattern = /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
       return emailPattern.test(val) || "Invalid email";

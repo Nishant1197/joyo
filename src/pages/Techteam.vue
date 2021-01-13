@@ -49,5 +49,8 @@ export default {
       projecttitle:"",
       membername:""
     }
-  }}
+  },
+  
+
+  }
 </script>

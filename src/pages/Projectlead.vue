@@ -38,6 +38,7 @@
 
 </template>
 <script>
+
 import Createissue from './Createissue.vue'
 export default {
    components: {
@@ -51,5 +52,8 @@ export default {
       projecttitle:"",
       membername:""
     }
-  }}
+  },
+ 
+
+  }
 </script>

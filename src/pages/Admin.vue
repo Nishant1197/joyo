@@ -1,12 +1,14 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+ <div class="q-pa-md">
+  <!-- <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
         <q-toolbar-title class="absolute-center">
           Dashboard
         </q-toolbar-title>
+        <q-btn v-if="this.$route.fullPath!='/'" @click="logout" class="absolute-right"  >logout</q-btn>
       </q-toolbar>
-    </q-header>
+    </q-header> -->
 
     <q-page class="flex q-pa-md">
       <q-card class="full-width">
@@ -49,17 +51,19 @@
            
           </q-tab-panel>
         </q-tab-panels>
+        
       </q-card>
+     
     </q-page>
 
     <q-page-container>
       <router-view />
     </q-page-container>
-  </q-layout>
+ </div>
 </template>
 <script>
 
-
+import {mapGetters, mapState} from "vuex"
 export default {
     name:"Dashboard",
   components: {
@@ -72,7 +76,20 @@ export default {
  data()
  {
     return{
-         tab:"addproject"
+          tab:"addproject"
      }
- }}
+ },
+ computed:{
+   ...mapState("emp",["currentUserDetails"])
+ },
+  methods:{
+      logout()
+      {
+       this.currentUserDetails[0].email=""
+        window.location.href="/"
+      }
+  }
+
+
+ }
 </script>

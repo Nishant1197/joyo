@@ -50,6 +50,7 @@
            <add-comment/>
           </q-tab-panel>
         </q-tab-panels>
+      
       </q-card>
       </div>
 
@@ -69,5 +70,9 @@ export default {
       projecttitle:"",
       membername:""
     }
-  }}
+  },
+
+ }
+  
+  
 </script>
