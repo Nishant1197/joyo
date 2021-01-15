@@ -103,7 +103,7 @@ export default {
       //  console.log(this.employeeList[i].type)
      
 
-      if(this.currentUserDetails.email==this.employeeList[i].email )
+      if(this.currentUserDetails.email==this.employeeList[i].email && this.currentUserDetails.password==this.employeeList[i].password)
         { console.log(this.currentUserDetails)
           window.localStorage.setItem("check",1);
           //this.$store.commit('emp/checkCondition',this.check);
