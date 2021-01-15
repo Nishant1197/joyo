@@ -29,25 +29,31 @@ const state={
           type:"intern"
         },
       ],
-      currentUserDetails:[{
+      currentUserDetails:{
         email: '',
         password: '',
         type: '',
-        }]
+        },
+        check:0
 }
 const mutations={
 
     updatedetails(state,payload){
-      state.currentUserDetails[0]=(payload)},
+      state.currentUserDetails=(payload),
+      console.log("say"+state.currentUserDetails)
+    },
 
     addemp(state,payload){
       state.employeeList.push(payload)
-      console.log(state.employeeList)
-    
+      console.log(state.employeeList)},
+    checkCondition(state,payload){
+      state.check=1;
+
+    }
     }
       
         
-}
+
 const actions={
 
         }

@@ -28,12 +28,14 @@ import {mapGetters, mapState} from "vuex"
 
 export default {
    computed:{
-   ...mapState("emp",["currentUserDetails"])
+   ...mapState("emp",["currentUserDetails","check"])
  },
   methods:{
       logout()
       {
-       this.currentUserDetails[0].email=""
+       this.currentUserDetails.email=""
+       this.check=-1
+       localStorage.removeItem("check");
         window.location.href="/"
       }
   }

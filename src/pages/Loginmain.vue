@@ -18,6 +18,13 @@
       v-model="details.password"
       label="Password"
     />
+      <q-option-group
+    
+      v-model="details.type"
+      :options="options"
+      color="primary"
+      inline
+    />
     
     <div class="row justify-center">
       <!-- q-space gives space horizontally -->
@@ -40,16 +47,40 @@ export default {
      details:{
       email: "",
       password: "",
+      type:""
      
       },
       formData:[],
       
      
+      options: [
+        {
+          label: "Admin",
+          value: "admin"
+        },
+        {
+          label: "Project Manager",
+          value: "projectmanager"
+        },
+        {
+          label: "Project Lead",
+          value: "projectlead"
+        },
+
+        {
+          label: "Tech team",
+          value: "techteam"
+        },
+        {
+          label: "Intern",
+          value: "intern"
+        }
+      ],
      
     }
   },
  computed:{
-    ...mapState('emp',['employeeList','currentUserDetails']),
+    ...mapState('emp',['employeeList','currentUserDetails','check']),
    
   },
 
@@ -57,33 +88,42 @@ export default {
      
   
     submitForm(){
-    
+        console.log("from"+this.details.email)
       this.$store.commit('emp/updatedetails',this.details);
      
       let i=0,temp=0;
       for(i=0;i<this.employeeList.length;i++)
       {
-       console.log(this.currentUserDetails[0])
-        
+
      
       //  console.log(this.employeeList[i].email)
       //  console.log(this.currentUserDetails.password)
       //  console.log(this.employeeList[i].password)
       //  console.log(this.currentUserDetails.type)
       //  console.log(this.employeeList[i].type)
-      if(this.currentUserDetails[0].email==this.employeeList[i].email )
-      {
-       
-          window.location.href=`#/${this.employeeList[i].type}`
-          break
-        
+     
 
-          }
-    
+      if(this.currentUserDetails.email==this.employeeList[i].email )
+        { console.log(this.currentUserDetails)
+          window.localStorage.setItem("check",1);
+          //this.$store.commit('emp/checkCondition',this.check);
+          
+          // console.log(this.check)
+          
+        //  window.location.href=`#/${this.employeeList[i].type}`
+        
+        this.$router.push(`${this.employeeList[i].type}`)
+       
+          break
+        }
+
+          
       }
+       this.details={}
+    
     },
     //  this.formData.push(this.details);
-    //  this.details={}
+    // 
 
     
     isValidEmail(val) {
