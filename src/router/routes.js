@@ -1,4 +1,5 @@
 import store from "src/store/emp"
+
 const routes = [
   {
     path: '/',
@@ -10,63 +11,92 @@ const routes = [
       beforeEnter:(to,from,next)=>{
      
           if(localStorage.getItem("check"))
-            {next('')
-            console.log("1st"+window.localStorage.getItem("check"))
-
-      }
-            else{
-              next()
-              console.log("Else="+localStorage.getItem("check"))
-            }
+            // { next(this.$route.query);
+       { 
+            next({path:localStorage.getItem("check")})
+             // next("/admin")
+         }  else
+          // { window.location="/login"
+          next()
+          }
 
       
-    }},
+
+      
+     
+  },
     {  path:'/intern',name:'intern', component: () => import('pages/Intern.vue'),
     beforeEnter:(to,from,next)=>{
-     if(window.localStorage.getItem("check") && store.state.currentUserDetails.type=="intern" )
+     if(localStorage.getItem("check")==="/intern")
       next()
       else
-     next('')
-  }},
-  //   //  { path: '/addproject', component: () => import('pages/addproject.vue') },
+      next({path:localStorage.getItem("check") || "/"})
+  // }
+// },
+}},
      { path: '/admin', component: () => import('pages/Admin.vue'),
-        beforeEnter:(to,from,next)=>{
-         if(window.localStorage.getItem("check") && store.state.currentUserDetails.type=="admin" )
-          next()
-          else
-          next('')
-        }
-      },
+     beforeEnter:(to,from,next)=>{
+      if(localStorage.getItem("check")=="/admin")
+       next()
+       else
+       {        
+
+       next({path:localStorage.getItem("check") || "/"})
+        // beforeEnter:(to,from,next)=>{
+        //  if(window.localStorage.getItem("check") && store.state.currentUserDetails.type=="admin" )
+        // {  next()
+        //   console.log("1st")}
+        //   else
+        //  {next('')
+        //  console.log("2nd")
+        //  console.log(store.state.check)
+        //  console.log($route.fullpath)
+        // }
+          
+        // }
+       }}},
       { path: '/projectmanager', component: () => import('pages/Projectmanager.vue'),
       beforeEnter:(to,from,next)=>{
+        if(localStorage.getItem("check")=="/projectmanager")
+         next()
+         else
+         next({path:localStorage.getItem("check") || "/"})
+     
+      // beforeEnter:(to,from,next)=>{
         
-       if(window.localStorage.getItem("check") && store.state.currentUserDetails.type=="projectmanager" )
+      //  if(window.localStorage.getItem("check") && store.state.currentUserDetails.type=="projectmanager" )
        
-        next()
-        else
-        next('')
+      //   next()
+      //   else
+      //   next('')
       
-      }
-    },
+      // }
+      }},
     { path: '/projectlead', component: () => import('pages/Projectlead.vue'),
-      beforeEnter:(to,from,next)=>{
-        // console.log("projectlead details"+this.currentUserDetails.email)
-       if(window.localStorage.getItem("check")&& store.state.currentUserDetails.type=="projectlead" )
+    beforeEnter:(to,from,next)=>{
+      if(localStorage.getItem("check")=="/projectlead")
+       next()
+       else
+       next({path:localStorage.getItem("check") || "/"})
+    //   beforeEnter:(to,from,next)=>{
+    //     // console.log("projectlead details"+this.currentUserDetails.email)
+    //    if(window.localStorage.getItem("check")&& store.state.currentUserDetails.type=="projectlead" )
        
-        next()
-        else
-        next('')
+    //     next()
+    //     else
+    //     next('')
       
-    }},
+    // }
+  }},
     { path: '/techteam', component: () => import('pages/Techteam.vue'),
-      beforeEnter:(to,from,next)=>{
-       if(window.localStorage.getItem("check") && store.state.currentUserDetails.type=="techteam")
-       
-        next()
-        else
-        next('')
+    beforeEnter:(to,from,next)=>{
+      if(localStorage.getItem("check")=="/techteam")
+       next()
+       else
+       next({path:localStorage.getItem("check") || "/"})
       
-    }},
+    }
+  },
   // {  path:'/intern',name:'intern', component: () => import('pages/Intern.vue'),
   //   beforeEnter:(to,from,next)=>{
   //    if(window.localStorage.getItem("check"))

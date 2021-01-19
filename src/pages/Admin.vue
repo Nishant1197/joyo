@@ -79,17 +79,33 @@ export default {
           tab:"addproject"
      }
  },
+
  computed:{
    ...mapState("emp",["currentUserDetails"])
  },
-  methods:{
-      logout()
-      {
-       this.currentUserDetails[0].email=""
-        window.location.href="/"
-      }
-  }
+  // methods:{
+  //     logout()
+  //     { console.log(this.currentUserDetails.type)
+  //      this.currentUserDetails[0].email=""
+  //       window.location.href="/"
+  //     }
+  // },
+// beforeMount() {
+//   if(this.currentUserDetails.email!="")
+//   { 
+//     console.log("enter")
+//     if(window.location.href==this.currentUserDetails.type || window.localStorage.getItem("check") )
+//    window.location.href=`/${this.currentUserDetails.type}`
+  
 
+// }
+// else{
+//   console.log("this")
+//   console.log(this.currentUserDetails.email)
+//   window.location.href="/" 
+// }
 
- }
+ 
+// }
+}
 </script>

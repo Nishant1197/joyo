@@ -47,7 +47,8 @@ export default {
   components:{
     Loginmain,
     Register
-  }
+  },
+  
 }
 
 </script>

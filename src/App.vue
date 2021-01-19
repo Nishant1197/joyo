@@ -4,7 +4,17 @@
   </div>
 </template>
 <script>
+import {mapActions} from "vuex"
 export default {
-  name: 'App'
-}
+ methods:{
+   ...mapActions("emp",['handleAuthStateChanged']),
+ },
+  //  mounted(){
+  //       this.handleAuthStateChanged()
+  //  }
+  
+  
+ }
+
 </script>
+

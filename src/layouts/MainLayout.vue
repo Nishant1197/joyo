@@ -11,6 +11,7 @@
 
         <q-toolbar-title v-if="this.$route.fullPath!='/'"  class="absolute-center">
           JOYO-Dashboard
+        
         </q-toolbar-title>
         
      <q-btn v-if="this.$route.fullPath!='/'" class="absolute-right" @click="logout"   >logout</q-btn>
@@ -33,11 +34,13 @@ export default {
   methods:{
       logout()
       {
+        console.log("from log out"+this.currentUserDetails.email)
        this.currentUserDetails.email=""
        this.check=-1
        localStorage.removeItem("check");
-        window.location.href="/"
+        this.$router.replace('/')
+        console.log("logged out")
       }
-  }
-  }
+  },
+}
 </script>

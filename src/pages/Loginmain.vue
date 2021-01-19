@@ -47,35 +47,37 @@ export default {
      details:{
       email: "",
       password: "",
-      type:""
+      type:"",
+      path:''
+      
      
       },
       formData:[],
       
      
-      options: [
-        {
-          label: "Admin",
-          value: "admin"
-        },
-        {
-          label: "Project Manager",
-          value: "projectmanager"
-        },
-        {
-          label: "Project Lead",
-          value: "projectlead"
-        },
+      // options: [
+      //   {
+      //     label: "Admin",
+      //     value: "admin"
+      //   },
+      //   {
+      //     label: "Project Manager",
+      //     value: "projectmanager"
+      //   },
+      //   {
+      //     label: "Project Lead",
+      //     value: "projectlead"
+      //   },
 
-        {
-          label: "Tech team",
-          value: "techteam"
-        },
-        {
-          label: "Intern",
-          value: "intern"
-        }
-      ],
+      //   {
+      //     label: "Tech team",
+      //     value: "techteam"
+      //   },
+      //   {
+      //     label: "Intern",
+      //     value: "intern"
+      //   }
+      // ],
      
     }
   },
@@ -102,10 +104,14 @@ export default {
       //  console.log(this.currentUserDetails.type)
       //  console.log(this.employeeList[i].type)
      
-
+     
       if(this.currentUserDetails.email==this.employeeList[i].email && this.currentUserDetails.password==this.employeeList[i].password)
-        { console.log(this.currentUserDetails)
-          window.localStorage.setItem("check",1);
+        {  console.log("right"+this.currentUserDetails.email)
+          window.localStorage.setItem("check",this.employeeList[i].path);
+          console.log(this.currentUserDetails)
+        
+        
+          
           //this.$store.commit('emp/checkCondition',this.check);
           
           // console.log(this.check)
